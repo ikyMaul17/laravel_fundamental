@@ -18,36 +18,19 @@
 </head>
 
 <body>
-
-        <!-- Menampilkan Array Statis->
-    <!-- <div class="container"> 
-        <h1>Blog CodePolitan</h1>
-        @php($number=1)
-        @foreach($posts as $post)
-        <div class="blog">
-            <h3>{{$post[0]}} <small>#{{$number  }}</small></h3>
-            <p>{{$post[1]}}</p>
-        </div> 
-        @php($number++)
-        @endforeach
-    </div>   -->
-
     <div class="container"> 
         <h1>
             Blog CodePolitan
             <a href="{{ url('posts/create') }}" class="btn btn-success">+ Buat Postingan</a>
         </h1>
-
-
-        @foreach($posts as $post)
-            
-            @php($post = explode(",", $post))
+        @foreach($posts as $post)            
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">{{$post[1]}}</h5>
-                    <p class="card-text">{{$post[2]}}</p>
-                    <p class="card-text"><small class="text-body-secondary">Last updated at {{ date("d M Y H:i",strtotime($post[3]))}}</small></p>
-                    <a href="{{ url("posts/$post[0]") }}" class="btn btn-primary">Selengkapnya</a>
+                    <h5 class="card-title">{{ $post->title}}</h5>
+                    <p class="card-text">{{$post->content}}</p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated at {{ date("d M Y H:i",strtotime($post->created_at))}}</small></p>
+                    <a href="{{ url("posts/$post->id") }}" class="btn btn-primary">Selengkapnya</a>
+                    <a href="{{ url("posts/$post->id/edit") }}" class="btn btn-warning">Edit</a>
                 </div>
             </div>
         @endforeach
