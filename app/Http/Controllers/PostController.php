@@ -147,7 +147,7 @@ class PostController extends Controller
             ]);
         return redirect("posts/{$id}");
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -156,6 +156,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('posts')
+        ->where('id',$id)
+        ->delete();   
+        return redirect("posts");
     }
 }

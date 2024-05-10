@@ -34,6 +34,9 @@ Route::get('posts/{id}',[PostController::class,'show']);
 Route::post('posts',[PostController::class,'store']);
 Route::get('posts/{id}/edit',[PostController::class,'edit']);
 Route::patch('posts/{id}',[PostController::class,'update']);
+Route::patch('posts/{id}',[PostController::class,'destroy']);
+Route::delete('posts/{id}',[PostController::class,'destroy']);
+
 
 // Route::get('hello',function(){
 //     echo "Hello Word aku telah berhasil menggunakan laravel ";
